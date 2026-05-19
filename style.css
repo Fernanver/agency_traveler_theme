@@ -1,60 +1,64 @@
 /*
 Theme Name: Traveler Agency theme
 */
-
+ 
 body {
+    
     margin: 0;
-
     font-family: "JetBrains Mono", monospace;
-
     background: #0b0f14;
     color: white;
 }
-
+ 
 /* ------------------------- */
 /* CONTAINER */
 /* ------------------------- */
-
+ 
 .container {
     width: min(1100px, 90%);
     margin: auto;
 }
-
+ 
 /* ------------------------- */
 /* HERO */
 /* ------------------------- */
-
+ 
 .hero {
-    height: 80vh;
+    height: 60vh;
     display: flex;
     align-items: center;
-
     position: relative;
-    overflow: hidden;
-    --scroll: 0px;
+    /* SIN overflow: hidden — lo tiene .hero-bg */
 }
-
+ 
+/* Wrapper que recorta SOLO la imagen del parallax */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+ 
 /* IMAGEN + PARALLAX */
-.hero::before {
+.hero-bg::before {
     content: "";
     position: absolute;
     inset: 0;
-
+    filter: blur(calc(var(--blur, 0) * 1px));
+ 
     background:
         linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
         url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
-
+ 
     background-size: cover;
     background-position: center;
-
-    transform:
-    scale(1.35)
-    translate3d(0, calc(var(--parallax) * -0.5px), 0);
-}
+ 
+    transform: translate3d(0, calc(var(--parallax) * -0.3px), 0) scale(1.25);
     will-change: transform;
 }
-
-.hero::after {
+ 
+/* Gradiente radial encima de la imagen */
+.hero-bg::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -63,157 +67,206 @@ body {
         transparent 30%,
         rgba(0,0,0,0.4)
     );
-    z-index: 1;
 }
+ 
 /* TEXTO ENCIMA */
 .hero-content {
     position: relative;
     z-index: 1;
-
     padding: 60px;
 }
-
+ 
 /* ------------------------- */
-
+ 
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 10px;
 }
-
+ 
 .hero p {
     max-width: 500px;
-
     opacity: 0.8;
     line-height: 1.6;
-
     margin-bottom: 25px;
 }
-
+ 
 .hero-button {
     display: inline-block;
-
     padding: 14px 24px;
-
     border-radius: 12px;
-
     background: white;
     color: black;
-
     text-decoration: none;
-
     font-weight: bold;
-
     transition:
         transform 0.2s ease,
         opacity 0.2s ease;
 }
-
+ 
 .hero-button:hover {
     transform: translateY(-3px);
     opacity: 0.9;
 }
-
+ 
 /* ------------------------- */
 /* DESTINATIONS */
 /* ------------------------- */
-
+ 
 .destinations {
     margin-top: 80px;
 }
-
+ 
 .destinations h2 {
     margin-bottom: 30px;
-
     font-size: 2rem;
 }
-
+ 
 /* ------------------------- */
 /* GRID */
 /* ------------------------- */
-
+ 
 .card-grid {
     display: grid;
-
     grid-template-columns:
         repeat(auto-fit, minmax(250px, 1fr));
-
     gap: 20px;
 }
-
+ 
 /* ------------------------- */
 /* CARD */
 /* ------------------------- */
-
+ 
 .travel-card {
     background: #121821;
-
     border-radius: 18px;
-
     overflow: hidden;
-
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
 }
-
+ 
 .travel-card:hover {
     transform: translateY(-6px);
-
     box-shadow:
         0 0 30px rgba(255,255,255,0.08);
 }
-
+ 
 .travel-card img {
     width: 100%;
     height: 220px;
-
     object-fit: cover;
 }
-
+ 
 .card-content {
     padding: 20px;
 }
-
+ 
 .card-content h3 {
     margin-top: 0;
 }
-
+ 
 .card-content p {
     opacity: 0.7;
     line-height: 1.5;
 }
-
+ 
 /* ------------------------- */
 /* TEXTO ANIMADO */
 /* ------------------------- */
-
+ 
 .word {
     display: flex;
     justify-content: center;
-
-    margin: 10px 0 20px;
-
+    gap: 2px;
     font-size: 3rem;
     font-weight: 700;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
     text-transform: uppercase;
+    cursor: pointer;
+    padding-block: 28px;  /* espacio para el translateY */
+    margin-block: -28px;
 }
-
+ 
 .char {
-    position: relative;
-    top: 0;
     display: inline-block;
-    transition: 0.4s ease;
+    will-change: transform;
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1); /* solo una, sin duplicado */
+}
+ 
+.char.space {
+    width: 20px;
+}
+ 
+.word:hover .char:not(.space) {
+    transform: translateY(-18px);
+}
+ 
+.word:hover .char:not(.space):nth-child(2n) {
+    transform: translateY(18px);
 }
 
-.word:hover .char:nth-child(odd) {
-    transform: translateY(-15px);
+/* header */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+
+    background: rgba(10, 15, 20, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.word:hover .char:nth-child(even) {
-    transform: translateY(15px);
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 0;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.logo span {
+    opacity: 0.6;
+    font-weight: 400;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.7;
+
+    transition: 0.2s ease;
+}
+
+.nav a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+
+/* ------------------------- */
+/* WORDPRESS ADMIN BAR */
+/* ------------------------- */
+
+.admin-bar .site-header {
+    top: 32px;
+}
+
+@media (max-width: 782px) {
+    .admin-bar .site-header {
+        top: 46px;
+    }
 }

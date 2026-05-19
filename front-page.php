@@ -4,7 +4,7 @@
 
     <!-- HERO (FULL SCREEN) -->
    <section class="hero">
-    
+    <div class="hero-bg"></div> 
     <div class="container hero-content">
 
         <div class="word">
@@ -15,10 +15,10 @@
             <span class="char">O</span>
             <span class="char">R</span>
             <span class="char">A</span>
-            <span class="char">&nbsp;</span>
+            <span class="char space"></span>
             <span class="char">E</span>
             <span class="char">L</span>
-            <span class="char">&nbsp;</span>
+            <span class="char space"></span>
             <span class="char">M</span>
             <span class="char">U</span>
             <span class="char">N</span>

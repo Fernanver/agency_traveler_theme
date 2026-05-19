@@ -1,17 +1,18 @@
-const hero = document.querySelector(".hero");
-
 let current = 0;
 let target = 0;
-const speed = 0.08;
 
 window.addEventListener("scroll", () => {
     target = window.scrollY;
 });
 
 function animate() {
-    current += (target - current) * speed;
+    current += (target - current) * 0.1;
 
-    hero.style.setProperty("--parallax", current * 0.4);
+    document.documentElement.style.setProperty("--parallax", current);
+
+    // 🔥 blur basado en scroll (suave)
+    const blur = Math.min(current * 0.02, 8);
+    document.documentElement.style.setProperty("--blur", blur);
 
     requestAnimationFrame(animate);
 }
