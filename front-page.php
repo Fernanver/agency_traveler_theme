@@ -1,24 +1,45 @@
 <?php get_header(); ?>
 
-<main class="container">
+<main>
 
-    <section class="hero">
+    <!-- HERO (FULL SCREEN) -->
+   <section class="hero">
+    
+    <div class="container hero-content">
 
-        <div class="hero-content">
-            <h1>Explora el mundo</h1>
-
-            <p>
-                Descubre destinos increíbles y vive experiencias únicas.
-            </p>
-
-            <a href="#" class="hero-button">
-                Ver destinos
-            </a>
+        <div class="word">
+            <span class="char">E</span>
+            <span class="char">X</span>
+            <span class="char">P</span>
+            <span class="char">L</span>
+            <span class="char">O</span>
+            <span class="char">R</span>
+            <span class="char">A</span>
+            <span class="char">&nbsp;</span>
+            <span class="char">E</span>
+            <span class="char">L</span>
+            <span class="char">&nbsp;</span>
+            <span class="char">M</span>
+            <span class="char">U</span>
+            <span class="char">N</span>
+            <span class="char">D</span>
+            <span class="char">O</span>
         </div>
 
-    </section>
+        <p>
+            Descubre destinos increíbles y vive experiencias únicas.
+        </p>
 
-    <section class="destinations">
+        <a href="#" class="hero-button">
+            Ver destinos
+        </a>
+
+    </div>
+
+</section>
+
+    <!-- DESTINATIONS (CONTAINER AQUÍ SÍ) -->
+    <section class="destinations container">
 
         <h2>Destinos populares</h2>
 
@@ -26,10 +47,7 @@
 
             <article class="travel-card">
 
-                <img
-                    src="#"
-                    alt="Playa"
-                >
+                <img src="#" alt="Playa">
 
                 <div class="card-content">
                     <h3>Bali</h3>
@@ -40,10 +58,7 @@
 
             <article class="travel-card">
 
-                <img
-                    src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a"
-                    alt="Ciudad"
-                >
+                <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a" alt="Ciudad">
 
                 <div class="card-content">
                     <h3>Tokyo</h3>
@@ -54,10 +69,7 @@
 
             <article class="travel-card">
 
-                <img
-                    src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963"
-                    alt="Montañas"
-                >
+                <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963" alt="Montañas">
 
                 <div class="card-content">
                     <h3>Suiza</h3>
