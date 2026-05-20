@@ -12,6 +12,7 @@
     <?php get_template_part('template-parts/travels-slider'); ?>
 
     <?php get_template_part('template-parts/location'); ?>
+    <?php get_template_part('template-parts/forms'); ?>
 
     
 
