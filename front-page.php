@@ -5,8 +5,9 @@
     <!-- HERO -->
     <?php get_template_part('template-parts/hero'); ?>
 
-    <!-- 🔥 AQUI YA FUERA DEL HERO -->
-    <?php get_template_part('template-parts/travel'); ?>
+
+    <!-- travels -->
+    <?php get_template_part('template-parts/travels-slider'); ?>
 
 </main>
 

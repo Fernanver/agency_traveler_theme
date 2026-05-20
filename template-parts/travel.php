@@ -4,38 +4,38 @@
 
     <div class="card-grid">
 
-        <article class="travel-card">
+        <?php
+        $args = [
+            'post_type' => 'post',
+            'posts_per_page' => 6
+        ];
 
-            <img src="#" alt="Playa">
+        $query = new WP_Query($args);
 
-            <div class="card-content">
-                <h3>Bali</h3>
-                <p>Playas, templos y atardeceres increíbles.</p>
-            </div>
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+        ?>
 
-        </article>
+            <article class="travel-card">
 
-        <article class="travel-card">
+                <?php if (has_post_thumbnail()) : ?>
+                    <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>">
+                <?php else: ?>
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="default">
+                <?php endif; ?>
 
-            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a" alt="Ciudad">
+                <div class="card-content">
+                    <h3><?php the_title(); ?></h3>
+                    <p><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
+                </div>
 
-            <div class="card-content">
-                <h3>Tokyo</h3>
-                <p>Luces, cultura y tecnología futurista.</p>
-            </div>
+            </article>
 
-        </article>
-
-        <article class="travel-card">
-
-            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963" alt="Montañas">
-
-            <div class="card-content">
-                <h3>Suiza</h3>
-                <p>Paisajes alpinos y naturaleza espectacular.</p>
-            </div>
-
-        </article>
+        <?php
+            endwhile;
+            wp_reset_postdata();
+        endif;
+        ?>
 
     </div>
 
