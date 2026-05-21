@@ -19,25 +19,41 @@
 
         </div>
 
-        <form class="ta-contact-form">
+    <form
+            id="contact-form"
+            class="ta-contact-form"
+            action="https://formspree.io/f/xpqnpoko"
+            method="POST">
 
-            <input
-                type="text"
-                placeholder="Tu nombre">
+        <input
+            type="hidden"
+            name="_subject"
+            value="Nuevo mensaje desde Traveler Agency">
 
-            <input
-                type="email"
-                placeholder="Tu correo">
+        <input
+            type="text"
+            name="name"
+            placeholder="Tu nombre">
+            
 
-            <textarea
-                placeholder="Cuéntanos sobre tu viaje">
-            </textarea>
+        <input
+            type="email"
+            name="email"
+            placeholder="Tu correo">
+            
 
-            <button type="submit">
-                Enviar mensaje
-            </button>
+        <textarea
+            name="message"
+            placeholder="Cuéntanos sobre tu viaje">
+            
+        </textarea>
 
-        </form>
+        <button type="submit">
+            Enviar mensaje
+        </button>
+        <p id="form-status"></p>
+
+    </form>
 
     </div>
 

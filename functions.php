@@ -21,6 +21,11 @@ add_action('wp_enqueue_scripts', function () {
         get_template_directory_uri() . '/assets/css/ta-forms.css'
     );
 
+    wp_enqueue_style(
+        'ta-footer',
+        get_template_directory_uri() . '/assets/css/footer.css'
+    );
+
     wp_enqueue_script(
         'ta-parallax',
         get_template_directory_uri() . '/assets/js/parallax.js',      [], false, true);
@@ -30,6 +35,11 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script(
         'ta-travel-slider',
         get_template_directory_uri() . '/assets/js/travel-slider.js',  [], false, true);
+
+    wp_enqueue_script(
+        'ta-contact',
+        get_template_directory_uri() . '/assets/js/contact.js',  [], false, true);
+    
     
 });
 add_theme_support('post-thumbnails');
